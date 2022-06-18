@@ -42,7 +42,7 @@
           <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
             Welcome to
             <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-              AMN Mnitoring
+              AMN Monitoring
             </span>
             Choose your service to log in.
           </h1>
