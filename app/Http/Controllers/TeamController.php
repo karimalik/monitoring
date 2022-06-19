@@ -47,41 +47,16 @@ class TeamController extends Controller
      * @param  \App\Http\Requests\StoreTeamRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTeamRequest $request)
+    public function store(Request $request)
     {
-        //
-        $team = new Team();
+        $request->validate([
+            'team_leader' => 'required',
+        ]);
 
-        $team->team_leader = $request->team_leader;
+        Team::create([
+            'team_leader' => $request->team_leader
+        ]);
 
-        for ($i=1; $i < 5; $i++) {
-            # code...
-
-            $team->FE = $request->{$i};
-
-            //  dd("hello");
-            //  dd("bonjour");
-
-            $team->save();
-
-
-        }
-
-
-        // $team->FE = $request->;
-
-
-        // $team->save();
-
-
-        // $take = $request->all();
-
-        // dd($request->all());
-
-
-        notify()->success('Add sucessfully 👌😍');
-
-        return back();
     }
 
     /**

@@ -72,7 +72,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Leaves Code</p>
                     <h5 class="font-weight-bolder mb-0">
-                        {{ $codes->count() }}
+                        {{ $codes }}
                     </h5>
                   </div>
                 </div>
@@ -120,10 +120,10 @@
             <table id="listtable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Site</th>
-                        <th>Observation</th>
-                        <th>Date</th>
-                        <th>Reference</th>
+                        <th class="text-center">Site</th>
+                        <th class="text-center">Observation</th>
+                        <th class="text-center">Date</th>
+                        <th class="text-center">Reference</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -149,15 +149,6 @@
                         </tr>
                     @endforeach
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Observation</th>
-                        <th>Date</th>
-                        <th>Reference</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
             </table>
           </div>
         </div>

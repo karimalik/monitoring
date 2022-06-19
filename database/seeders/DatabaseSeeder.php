@@ -2,6 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Equipment;
+use App\Models\FE;
+use App\Models\Guardian;
+use App\Models\Maintenance;
+use App\Models\Team;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -27,6 +32,12 @@ class DatabaseSeeder extends Seeder
             'name' => 'Karim kompissi',
             'email' => 'karimkompissi@gmail.com',
             'password' => Hash::make('password')
-         ]);
+        ]);
+
+        Team::factory(10)->create();
+        Equipment::factory(10)->create();
+        Maintenance::factory(10)->create();
+        Guardian::factory(10)->create();
+        FE::factory(10)->create();
     }
 }

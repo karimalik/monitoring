@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class FE extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name'];
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }

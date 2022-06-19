@@ -30,7 +30,7 @@ class HomeController extends Controller
         $teams = DB::table('teams')->get();
         $maintenances = DB::table('maintenances')->get();
         $guardians = DB::table('guardians')->get();
-        $codes = Maintenance::Where('leave_code')->get();
+        $codes = DB::table('maintenances')->count('leave_code');
 
         return view('home', compact('teams', 'maintenances', 'guardians', 'codes'));
     }

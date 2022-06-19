@@ -37,7 +37,7 @@
             <table id="listtable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th class="text-center">Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -62,12 +62,6 @@
                      @endforeach
 
                 </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
             </table>
           </div>
         </div>

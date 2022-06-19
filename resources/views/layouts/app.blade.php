@@ -295,7 +295,7 @@
   <x:notify-messages />
   @notifyJs
   <!--   Core JS Files   -->
-  <script src="{{ asset('assets/js/jquery.min.js')}}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" ></script>
@@ -305,37 +305,32 @@
   <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
   <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
   <script src="{{ asset('assets/js/plugins/chartjs.min.js')}}"></script>
-  <script>
-
-    $(document).ready(function () {
-        $('#listtable').DataTable();
-    });
-  </script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
     <script>
-        function newMenuItem() {
-            var newElem = $('tr.list-item').first().clone();
-            newElem.find('input').val('');
-            newElem.appendTo('table#item-add');
+
+        $(document).ready(function () {
+            $('#listtable').DataTable();
+        });
+    </script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+            damping: '0.5'
         }
-        if ($("table#item-add").is('*')) {
-            $('.add-item').on('click', function (e) {
-                e.preventDefault();
-                newMenuItem();
-            });
-            $(document).on("click", "#item-add .delete", function (e) {
-                e.preventDefault();
-                $(this).parent().parent().parent().parent().remove();
-            });
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
+    </script>
+    <script type="text/javascript">
+        var i = 0;
+        $("#dynamic-ar").click(function () {
+            ++i;
+            $("#dynamicAddRemove").append('<tr><td><input type="text" name="addMoreInputFields[' + i +
+                '][name]" placeholder="Enter subject" class="form-control" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Delete</button></td></tr>'
+                );
+        });
+        $(document).on('click', '.remove-input-field', function () {
+            $(this).parents('tr').remove();
+        });
     </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>

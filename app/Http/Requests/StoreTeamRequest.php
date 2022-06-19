@@ -26,7 +26,6 @@ class StoreTeamRequest extends FormRequest
         return [
             //
             'team_leader' => 'required',
-            'FE' => 'required',
         ];
     }
 }

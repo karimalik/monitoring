@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('f_e_s', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable;
+            $table->foreignId('team_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -9,5 +9,10 @@ class Team extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ['team_leader'];
+
+    public function fes()
+    {
+        return $this->hasMany(FE::class);
+    }
 }

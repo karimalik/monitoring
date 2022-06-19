@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Maintenance;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,10 @@ class GuardianFactory extends Factory
     {
         return [
             //
+            'name' => $this->faker->name(),
+            'phone' => $this->faker->phoneNumber(),
+            'payment_date' => $this->faker->date(),
+            'maintenance_id' => Maintenance::all()->random()->id,
         ];
     }
 }

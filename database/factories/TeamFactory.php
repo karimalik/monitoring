@@ -18,6 +18,7 @@ class TeamFactory extends Factory
     {
         return [
             //
+            'team_leader' => $this->faker->name()
         ];
     }
 }

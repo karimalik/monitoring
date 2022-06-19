@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class EquipmentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'picture' => 'monitoring.png' .rand(10, 255) ,
+            'date' => $this->faker->date(),
+            'team_id' => Team::all()->random()->id,
         ];
     }
 }

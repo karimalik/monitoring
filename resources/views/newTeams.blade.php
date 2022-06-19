@@ -39,29 +39,23 @@
                             <input type="text" class="form-control" id="name" name="team_leader" placeholder="name of team" required/>
                         </div>
                         <div class="mb-2">
-                            <table id="item-add" style="width:100%;">
+                            <table id="dynamicAddRemove" style="width:100%;">
                                 <tr class="list-item">
                                     <td>
                                         <div class="row">
                                             <div class="col-mb-3">
                                                 <label for="name" class="form-label">FE</label>
-                                                <input type="text" class="form-control" id="FE"  name="1" placeholder="FE" required/>
-                                                <input type="hidden" class="form-control" id="1"  value="1" />
-                                                <input type="hidden" class="form-control" id="numberInputFinal"  name="numberInputFinal" value="1" />
-                                            </div>
-                                            <div class="col-md-2">
-                                                <label class="col-form-label">Close</label>
-                                                <div class="form-group">
-                                                    <a class="delete" href="#"><i class="fa fa-close"></i></a>
-                                                </div>
+                                                <input type="text" class="form-control"  name="addMoreInputFields[0][name]" placeholder="FE" required/>
                                             </div>
                                         </div>
                                     </td>
+
+
                                 </tr>
                             </table>
                         </div>
-                        <button type="button" id="1" class="btn bg-gradient-warning add-item mb-0" onclick="newMenuItem(this.id)"><i class="fas fa-plus-circle"></i>&nbsp;&nbsp;New Item</button>
-                        <button type="submit" class="btn bg-gradient-dark mb-0"><i class="fas fa-check"></i>&nbsp;&nbsp;Add New team</button>
+                        <button type="button" name="add" id="dynamic-ar" class="btn bg-gradient-info mb-0"> <i class="fa fa-plus"></i> Add Item</button>
+                        <button type="submit" class="btn bg-gradient-dark mb-0"><i class="fas fa-check"></i>&nbsp;&nbsp;Save Team</button>
                     </form>
                 </div>
           </div>
