@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        Schema::create('sites', function (Blueprint $table) {
+        Schema::create('maintenances', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
+            $table->string('site')->nullable();
             $table->string('reference')->nullable();
             $table->string('status')->nullable();
             $table->string('date')->nullable();
@@ -27,6 +26,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('leave_code')->nullable();
             $table->foreignId('team_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -37,7 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('sites');
+        Schema::dropIfExists('maintenances');
     }
 };

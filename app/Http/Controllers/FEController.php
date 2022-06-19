@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Site;
-use App\Http\Requests\StoreSiteRequest;
-use App\Http\Requests\UpdateSiteRequest;
+use App\Models\FE;
+use App\Http\Requests\StoreFERequest;
+use App\Http\Requests\UpdateFERequest;
 
-class SiteController extends Controller
+class FEController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +31,10 @@ class SiteController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSiteRequest  $request
+     * @param  \App\Http\Requests\StoreFERequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSiteRequest $request)
+    public function store(StoreFERequest $request)
     {
         //
     }
@@ -42,10 +42,10 @@ class SiteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Site  $site
+     * @param  \App\Models\FE  $fE
      * @return \Illuminate\Http\Response
      */
-    public function show(Site $site)
+    public function show(FE $fE)
     {
         //
     }
@@ -53,10 +53,10 @@ class SiteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Site  $site
+     * @param  \App\Models\FE  $fE
      * @return \Illuminate\Http\Response
      */
-    public function edit(Site $site)
+    public function edit(FE $fE)
     {
         //
     }
@@ -64,11 +64,11 @@ class SiteController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSiteRequest  $request
-     * @param  \App\Models\Site  $site
+     * @param  \App\Http\Requests\UpdateFERequest  $request
+     * @param  \App\Models\FE  $fE
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSiteRequest $request, Site $site)
+    public function update(UpdateFERequest $request, FE $fE)
     {
         //
     }
@@ -76,10 +76,10 @@ class SiteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Site  $site
+     * @param  \App\Models\FE  $fE
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Site $site)
+    public function destroy(FE $fE)
     {
         //
     }

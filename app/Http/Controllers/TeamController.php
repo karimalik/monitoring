@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Team;
 use App\Http\Requests\StoreTeamRequest;
+use Illuminate\Support\Facades\Request;
+
 use App\Http\Requests\UpdateTeamRequest;
+use Illuminate\Support\Facades\Validator;
 
 class TeamController extends Controller
 {
@@ -20,7 +23,9 @@ class TeamController extends Controller
     public function index()
     {
         //
-        return view('teams');
+        $teams = Team::all();
+
+        return view('teams', compact('teams'));
     }
 
     /**
@@ -31,6 +36,9 @@ class TeamController extends Controller
     public function create()
     {
         //
+
+
+        return view('newTeams');
     }
 
     /**
@@ -42,6 +50,38 @@ class TeamController extends Controller
     public function store(StoreTeamRequest $request)
     {
         //
+        $team = new Team();
+
+        $team->team_leader = $request->team_leader;
+
+        for ($i=1; $i < 5; $i++) {
+            # code...
+
+            $team->FE = $request->{$i};
+
+            //  dd("hello");
+            //  dd("bonjour");
+
+            $team->save();
+
+
+        }
+
+
+        // $team->FE = $request->;
+
+
+        // $team->save();
+
+
+        // $take = $request->all();
+
+        // dd($request->all());
+
+
+        notify()->success('Add sucessfully 👌😍');
+
+        return back();
     }
 
     /**
@@ -87,5 +127,8 @@ class TeamController extends Controller
     public function destroy(Team $team)
     {
         //
+        $team->delete();
+
+        return back();
     }
 }

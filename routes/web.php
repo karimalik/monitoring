@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\savedataController;
+use App\Http\Controllers\MaintenanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +27,8 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('teams', TeamController::class);
+    Route::resource('maintenance', MaintenanceController::class);
 });
 
+
+Route::post('savedata', [App\Http\Controllers\savedataController::class, 'save']);

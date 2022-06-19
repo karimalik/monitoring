@@ -30,7 +30,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold"> Number of Teams</p>
                     <h5 class="font-weight-bolder mb-0">
-                      53
+                      {{ $teams->count() }}
                     </h5>
                   </div>
                 </div>
@@ -49,9 +49,9 @@
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of sites</p>
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of Maintaining</p>
                     <h5 class="font-weight-bolder mb-0">
-                      1000
+                        {{ $maintenances->count() }}
                     </h5>
                   </div>
                 </div>
@@ -72,7 +72,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Leaves Code</p>
                     <h5 class="font-weight-bolder mb-0">
-                      12
+                        {{ $codes->count() }}
                     </h5>
                   </div>
                 </div>
@@ -93,7 +93,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of guardians</p>
                     <h5 class="font-weight-bolder mb-0">
-                      12
+                        {{ $guardians->count() }}
                     </h5>
                   </div>
                 </div>
@@ -120,8 +120,7 @@
             <table id="listtable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Status</th>
+                        <th>Site</th>
                         <th>Observation</th>
                         <th>Date</th>
                         <th>Reference</th>
@@ -129,32 +128,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="align-middle text-center">
-                            <span class="text-secondary font-weight-bold">Test</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-success">Online</span>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                            <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                        </td>
-                        <td class="align-middle text-center">
-                            <span class="text-secondary font-weight-bold">11/01/19</span>
-                        </td>
-                        <td class="align-middle text-center">
-                            <span class="text-secondary font-weight-bold">AMN-014</span>
-                        </td>
-                        <td>
-                            <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
-                            <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
-                        </td>
-                    </tr>
+                    @foreach ($maintenances as $maintenance)
+                        <tr>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary font-weight-bold"> {{ $maintenance->site }} </span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="badge badge-sm bg-gradient-secondary"> {{ $maintenance->observation }} </span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary font-weight-bold"> {{ $maintenance->date }} </span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary font-weight-bold"> {{ $maintenance->reference }} </span>
+                            </td>
+                            <td>
+                                <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>Name</th>
-                        <th>Status</th>
                         <th>Observation</th>
                         <th>Date</th>
                         <th>Reference</th>
