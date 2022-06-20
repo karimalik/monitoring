@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" id="datatake" role="form">
+                    <form method="POST" id="datatake" role="form" action=" {{ route('teams.store') }} ">
                         @csrf
                         <div class="mb-2">
                             <label for="name" class="form-label">Teams Leaders</label>

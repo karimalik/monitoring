@@ -9,7 +9,7 @@ class FE extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'team_id'];
 
     public function team()
     {

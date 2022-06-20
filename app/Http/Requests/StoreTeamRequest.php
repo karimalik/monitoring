@@ -26,6 +26,7 @@ class StoreTeamRequest extends FormRequest
         return [
             //
             'team_leader' => 'required',
+            'addMoreInputFields.*.name' => 'required',
         ];
     }
 }

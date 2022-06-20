@@ -77,7 +77,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Sites</span>
+            <span class="nav-link-text ms-1">Maintenance</span>
           </a>
         </li>
         <li class="nav-item">
@@ -297,16 +297,16 @@
   <!--   Core JS Files   -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" ></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  {{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js" ></script>
   <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js" ></script>
+  <script src="//cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
   <script src="{{ asset('assets/js/core/popper.min.js')}}"></script>
   <script src="{{ asset('assets/js/core/bootstrap.min.js')}}"></script>
   <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
   <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
   <script src="{{ asset('assets/js/plugins/chartjs.min.js')}}"></script>
     <script>
-
         $(document).ready(function () {
             $('#listtable').DataTable();
         });
@@ -331,7 +331,24 @@
         $(document).on('click', '.remove-input-field', function () {
             $(this).parents('tr').remove();
         });
+        $(document).ready(function () {
+            $('.ckeditor').ckeditor();
+        });
+        // $(function() {
+        //     $('#box-comment').hide();
+        //     $('#observation').change(function(){
+        //         if($('#observation').val() == 'non resolu') {
+        //             $('#box-comment').show();
+        //         } if ($('#observation').val() == 'standBy') {
+        //             $('#box-comment').show();
+        //         }
+        //         else {
+        //             $('#box-comment').hide();
+        //         }
+        //     });
+        });
     </script>
+
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

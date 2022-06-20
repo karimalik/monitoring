@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Team;
 use App\Models\Maintenance;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreMaintenanceRequest;
 use App\Http\Requests\UpdateMaintenanceRequest;
+
 
 class MaintenanceController extends Controller
 {
@@ -20,7 +23,9 @@ class MaintenanceController extends Controller
     public function index()
     {
         //
-        return view('maintenance');
+        $maintenances = Maintenance::all();
+
+        return view('maintenance', compact('maintenances'));
     }
 
     /**
@@ -31,6 +36,9 @@ class MaintenanceController extends Controller
     public function create()
     {
         //
+        $teams = Team::all();
+
+        return view('newMaintenance', compact('teams'));
     }
 
     /**
@@ -39,9 +47,36 @@ class MaintenanceController extends Controller
      * @param  \App\Http\Requests\StoreMaintenanceRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMaintenanceRequest $request)
+    public function store(Request $request)
     {
         //
+        $file = $request->file('image');
+        $fileName =  time() . '.' . $file->getClientOriginalExtension();
+        $file->storeAs('public/Maintenance', $fileName);
+
+        $empData = [
+            'site' => $request->site,
+            'reference' => $request->reference,
+            'status' => implode(',', $request->status),
+            'diagnostique' => $request->diagnostique,
+            'action' => $request->action,
+            'image' => $fileName,
+            'observation' => $request->observation,
+            'comment' => $request->comment,
+            'leave_code' => $request->leave_code,
+            'team_id' => $request->team_id,
+            'date' => $request->date,
+        ];
+
+        // $input = $request->all();
+        // $input['status'] = $request->input('status');
+
+	    Maintenance::create($empData);
+
+        notify()->success('Maintenance creaded successfully 👌😎!');
+
+        return back();
+
     }
 
     /**
@@ -87,5 +122,10 @@ class MaintenanceController extends Controller
     public function destroy(Maintenance $maintenance)
     {
         //
+        $maintenance->delete();
+
+        notify()->success('data deleted successfully😎');
+
+        return back();
     }
 }

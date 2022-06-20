@@ -7,7 +7,7 @@ use App\Http\Requests\StoreTeamRequest;
 use Illuminate\Support\Facades\Request;
 
 use App\Http\Requests\UpdateTeamRequest;
-use Illuminate\Support\Facades\Validator;
+use App\Models\FE;
 
 class TeamController extends Controller
 {
@@ -47,15 +47,23 @@ class TeamController extends Controller
      * @param  \App\Http\Requests\StoreTeamRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTeamRequest $request)
     {
-        $request->validate([
-            'team_leader' => 'required',
-        ]);
 
-        Team::create([
-            'team_leader' => $request->team_leader
-        ]);
+        // dd($request->input('addMoreInputFields'));
+
+       $teams = Team::create(['team_leader' => $request->team_leader,]);
+
+        foreach ($request->input('addMoreInputFields') as $key => $value) {
+            # code...
+            $value['team_id'] = $teams->id;
+
+            FE::create($value);
+        }
+
+        notify()->success('Team creaded successfully 👌😎!');
+
+        return back();
 
     }
 
@@ -103,6 +111,8 @@ class TeamController extends Controller
     {
         //
         $team->delete();
+
+        notify()->success('data deleted successfully😎');
 
         return back();
     }

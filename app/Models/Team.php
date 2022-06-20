@@ -15,4 +15,9 @@ class Team extends Model
     {
         return $this->hasMany(FE::class);
     }
+
+    public function maintenance()
+    {
+        return $this->belongsTo(Maintenance::class);
+    }
 }

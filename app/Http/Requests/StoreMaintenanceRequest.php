@@ -13,7 +13,7 @@ class StoreMaintenanceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,17 @@ class StoreMaintenanceRequest extends FormRequest
     {
         return [
             //
+            'site' => 'required',
+            'reference' => 'required',
+            'status' => 'required',
+            'date' => 'required',
+            'diagnostique' => 'required',
+            'action' => 'required',
+            'observation' => 'required',
+            'comment' => 'required',
+            'image' => 'required',
+            'leave_code' => 'required',
+            'team_id' => 'required',
         ];
     }
 }
