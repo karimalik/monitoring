@@ -9,5 +9,11 @@ class Equipment extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $fillable = ['name', 'picture', 'date', 'team_id'];
+
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 }

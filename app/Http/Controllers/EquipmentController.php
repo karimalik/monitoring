@@ -16,6 +16,10 @@ class EquipmentController extends Controller
     public function index()
     {
         //
+
+        $equipements = Equipment::all();
+
+        return view('equipement', compact('equipements'));
     }
 
     /**
@@ -26,6 +30,8 @@ class EquipmentController extends Controller
     public function create()
     {
         //
+
+        return view('newEquiepement');
     }
 
     /**

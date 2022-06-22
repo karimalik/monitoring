@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EquipmentController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
@@ -28,6 +29,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('teams', TeamController::class);
     Route::resource('maintenance', MaintenanceController::class);
+    Route::resource('equipement', EquipmentController::class);
 });
 
 

@@ -20,4 +20,9 @@ class Team extends Model
     {
         return $this->belongsTo(Maintenance::class);
     }
+
+    public function equipement()
+    {
+        return $this->hasOne(Equipement::class);
+    }
 }
