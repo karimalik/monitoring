@@ -61,7 +61,7 @@ class TeamController extends Controller
             FE::create($value);
         }
 
-        notify()->success('Team creaded successfully 👌😎!');
+        notify()->success('data creaded successfully 👌😎!');
 
         return back();
 

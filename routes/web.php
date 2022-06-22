@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\GuardianController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
@@ -30,6 +31,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('teams', TeamController::class);
     Route::resource('maintenance', MaintenanceController::class);
     Route::resource('equipement', EquipmentController::class);
+    Route::resource('guardien', GuardianController::class);
 });
 
 

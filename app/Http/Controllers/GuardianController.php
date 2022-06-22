@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Guardian;
 use App\Http\Requests\StoreGuardianRequest;
 use App\Http\Requests\UpdateGuardianRequest;
+use Illuminate\Http\Request;
 
 class GuardianController extends Controller
 {
@@ -16,6 +17,10 @@ class GuardianController extends Controller
     public function index()
     {
         //
+
+        $guardians = Guardian::all();
+
+        return view('guardien', compact('guardians'));
     }
 
     /**
@@ -26,6 +31,7 @@ class GuardianController extends Controller
     public function create()
     {
         //
+        return view('newGuardien');
     }
 
     /**
@@ -34,9 +40,21 @@ class GuardianController extends Controller
      * @param  \App\Http\Requests\StoreGuardianRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreGuardianRequest $request)
+    public function store(Request $request)
     {
         //
+        $empData = [
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'payment_date' => $request->payment_date,
+            'site' => $request->site,
+        ];
+
+        Guardian::create($empData);
+
+        notify()->success('data creaded successfully 👌😎!');
+
+        return back();
     }
 
     /**
@@ -82,5 +100,10 @@ class GuardianController extends Controller
     public function destroy(Guardian $guardian)
     {
         //
+        $guardian->delete();
+
+        notify()->success('data deleted successfully😎');
+
+        return back();
     }
 }

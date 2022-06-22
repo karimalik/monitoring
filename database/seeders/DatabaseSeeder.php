@@ -34,10 +34,10 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password')
         ]);
 
-        Team::factory(10)->create();
-        Equipment::factory(10)->create();
-        Maintenance::factory(10)->create();
-        Guardian::factory(10)->create();
-        FE::factory(10)->create();
+        // Team::factory(10)->create();
+        // Equipment::factory(10)->create();
+        // Maintenance::factory(10)->create();
+        // Guardian::factory(10)->create();
+        // FE::factory(10)->create();
     }
 }

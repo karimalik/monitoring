@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 
@@ -9,10 +10,9 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-dark" aria-current="page">Dashboard</li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Equipment</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Equipment</h6>
+          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
         </nav>
         <div class="card">
             <div class="card-header pb-0">
@@ -29,12 +29,12 @@
             <div class="card-header pb-0">
                 <div class="row">
                   <div class="col-lg-6 col-7">
-                    <h6> <i class="fa fa-plus text-info" aria-hidden="true"></i> Add New Equipment </h6>
+                    <h6> <i class="fa fa-plus text-info" aria-hidden="true"></i> Add New Guardian </h6>
                   </div>
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" id="datatake" role="form" action=" {{ route('equipement.store') }} " enctype="multipart/form-data">
+                    <form method="POST" id="datatake" role="form" action=" {{ route('guardien.store') }} " enctype="multipart/form-data">
                         @csrf
                         <div class="mb-2">
                             <label for="site" class="form-label">Name</label>
@@ -42,24 +42,19 @@
                         </div>
 
                         <div class="mb-2">
-                            <label for="reference" class="form-label">Image</label>
-                            <input type="file" class="form-control" id="image" name="picture" accept=".jpg, .png, .jpeg, .gif" required/>
+                            <label for="site" class="form-label">Phone</label>
+                            <input type="text" class="form-control" name="phone" placeholder="Phone" required/>
                         </div>
 
                         <div class="mb-2">
-                            <label for="reference" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="date" name="date" placeholder="date" required/>
+                            <label for="reference" class="form-label">Payment Date</label>
+                            <input type="date" class="form-control" id="date" name="payment_date" placeholder="date" required/>
                         </div>
 
                         <div class="mb-2">
-                            <label for="reference" class="form-label">Teams</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="team_id" required>
-                                @foreach ($teams as $team)
-                                 <option value=" {{ $team->id }} " > {{ $team->team_leader }}</option>
-                                @endforeach
-                            </select>
-                        </div> <br>
-
+                            <label for="site" class="form-label">Site</label>
+                            <input type="text" class="form-control" name="site" placeholder="Site" required/>
+                        </div>
 
 
                         {{-- <button type="button" name="add" id="dynamic-ar" class="btn bg-gradient-info mb-0"> <i class="fa fa-plus"></i> Add Item</button> --}}

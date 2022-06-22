@@ -73,7 +73,7 @@ class MaintenanceController extends Controller
 
 	    Maintenance::create($empData);
 
-        notify()->success('Maintenance creaded successfully 👌😎!');
+        notify()->success('data creaded successfully 👌😎!');
 
         return back();
 

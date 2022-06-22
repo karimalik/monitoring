@@ -10,9 +10,9 @@
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm text-dark" aria-current="page">Dashboard</li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Maintenance</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Guardians</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Maintenance</h6>
+          <h6 class="font-weight-bolder mb-0">Guardians</h6>
         </nav>
         <div class="card">
             <div class="card-header pb-0">
@@ -25,7 +25,7 @@
     <div class="container-fluid py-4">
 
         <div class="col-6 mt-5">
-            <a class="btn bg-gradient-dark mb-0" href=" {{ route('maintenance.create') }} "><i class="fas fa-plus"></i>&nbsp;&nbsp;New Maintaince</a>
+            <a class="btn bg-gradient-dark mb-0" href=" {{ route('guardien.create') }} "><i class="fas fa-plus"></i>&nbsp;&nbsp;New Guardian</a>
         </div>
 
       <div class="row my-4">
@@ -41,28 +41,27 @@
             <table id="listtable" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
-                        <th class="text-center">Site</th>
-                        <th class="text-center">Observation</th>
-                        <th class="text-center">Date</th>
-                        <th class="text-center">Reference</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Payment Date</th>
+                        <th class="text-center">Phone</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($maintenances as $maintenance)
+                    @foreach ($guardians as $guardian)
                         <tr>
                             <td class="align-middle text-center">
-                                <span class="text-secondary font-weight-bold"> {{ $maintenance->site }} </span>
+                                <span class="text-secondary font-weight-bold"> {{ $guardian->name }} </span>
                             </td>
                             <td class="align-middle text-center text-sm">
-                                <span class="badge badge-sm bg-gradient-secondary"> {{ $maintenance->observation }} </span>
+                                <span class="text-secondary font-weight-bold"> {{ $guardian->payment_date }} </span>
                             </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary font-weight-bold"> {{ $maintenance->date }} </span>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-secondary font-weight-bold"> {{ $guardian->phone }} </span>
                             </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary font-weight-bold"> {{ $maintenance->reference }} </span>
-                            </td>
+                            {{-- <td class="align-middle text-center">
+                                <span class="text-secondary font-weight-bold"> {{ $equipement->team_id }} </span>
+                            </td> --}}
                             <td>
                                 <button type="button" class="btn btn-link text-danger text-gradient px-3 mb-0" data-bs-toggle="modal" data-bs-target="#modal-delete"><i class="far fa-trash-alt me-2"></i>Delete</button>
                                 {{-- <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a> --}}
@@ -76,7 +75,7 @@
                                                     <span aria-hidden="true">×</span>
                                                     </button>
                                                 </div>
-                                                <form action="{{ route('maintenance.destroy', $maintenance->id) }}" method="POST">
+                                                <form action="{{ route('guardien.destroy', $guardian->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <div class="modal-body">

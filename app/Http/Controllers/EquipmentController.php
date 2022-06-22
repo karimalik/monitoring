@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Equipment;
 use App\Http\Requests\StoreEquipmentRequest;
 use App\Http\Requests\UpdateEquipmentRequest;
+use App\Models\Team;
+use Illuminate\Http\Request;
 
 class EquipmentController extends Controller
 {
@@ -30,8 +32,9 @@ class EquipmentController extends Controller
     public function create()
     {
         //
+        $teams = Team::all();
 
-        return view('newEquiepement');
+        return view('newEquiepement', compact('teams'));
     }
 
     /**
@@ -40,9 +43,27 @@ class EquipmentController extends Controller
      * @param  \App\Http\Requests\StoreEquipmentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreEquipmentRequest $request)
+    public function store(Request $request)
     {
         //
+        $file = $request->file('picture');
+        $fileName =  time() . '.' . $file->getClientOriginalExtension();
+        $file->storeAs('public/Equipement', $fileName);
+
+        // dd($fileName);
+
+        $empData = [
+            'name' => $request->name,
+            'picture' => $fileName,
+            'team_id' => $request->team_id,
+            'date' => $request->date,
+        ];
+
+        Equipment::create($empData);
+
+        notify()->success('data creaded successfully 👌😎!');
+
+        return back();
     }
 
     /**
@@ -88,5 +109,10 @@ class EquipmentController extends Controller
     public function destroy(Equipment $equipment)
     {
         //
+        $equipment->delete();
+
+        notify()->success('data deleted successfully😎');
+
+        return back();
     }
 }

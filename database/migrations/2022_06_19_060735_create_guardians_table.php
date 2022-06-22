@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
             $table->string('payment_date')->nullable();
-            $table->foreignId('maintenance_id')->constrained()->onDelete('cascade');
+            $table->string('site')->nullable();
+            // $table->foreignId('maintenance_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
