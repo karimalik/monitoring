@@ -22,7 +22,7 @@ class GuardianFactory extends Factory
             'name' => $this->faker->name(),
             'phone' => $this->faker->phoneNumber(),
             'payment_date' => $this->faker->date(),
-            'maintenance_id' => Maintenance::all()->random()->id,
+            // 'maintenance_id' => Maintenance::all()->random()->id,
         ];
     }
 }

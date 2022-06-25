@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\EquipmentController;
-use App\Http\Controllers\GuardianController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\GuardianController;
 use App\Http\Controllers\savedataController;
+use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('maintenance', MaintenanceController::class);
     Route::resource('equipement', EquipmentController::class);
     Route::resource('guardien', GuardianController::class);
+    Route::resource('users', UserController::class);
 });
 
 

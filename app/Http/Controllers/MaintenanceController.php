@@ -7,7 +7,7 @@ use App\Models\Maintenance;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreMaintenanceRequest;
 use App\Http\Requests\UpdateMaintenanceRequest;
-
+use App\Helpers\Helper;
 
 class MaintenanceController extends Controller
 {
@@ -53,7 +53,7 @@ class MaintenanceController extends Controller
         $file = $request->file('image');
         $fileName =  time() . '.' . $file->getClientOriginalExtension();
         $file->storeAs('public/Maintenance', $fileName);
-
+        $leave_code = Helper::IDGenerator( new Maintenance, 'leave_code', 4, 'AMN' );
         $empData = [
             'site' => $request->site,
             'reference' => $request->reference,
@@ -63,7 +63,7 @@ class MaintenanceController extends Controller
             'image' => $fileName,
             'observation' => $request->observation,
             'comment' => $request->comment,
-            'leave_code' => $request->leave_code,
+            'leave_code' =>$leave_code,
             'team_id' => $request->team_id,
             'date' => $request->date,
         ];
@@ -73,7 +73,7 @@ class MaintenanceController extends Controller
 
 	    Maintenance::create($empData);
 
-        notify()->success('data creaded successfully 👌😎!');
+        notify()->success('data creaded successfully 👌😎!, Please copy your leave code.',$leave_code);
 
         return back();
 

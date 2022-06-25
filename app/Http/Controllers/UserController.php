@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Guardian;
-use App\Http\Requests\StoreGuardianRequest;
-use App\Http\Requests\UpdateGuardianRequest;
+use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class GuardianController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,9 @@ class GuardianController extends Controller
     public function index()
     {
         //
+        $users = User::all();
 
-        $guardians = Guardian::all();
-
-        return view('guardien', compact('guardians'));
+        return \view('auth.Users', compact('users'));
     }
 
     /**
@@ -31,28 +30,28 @@ class GuardianController extends Controller
     public function create()
     {
         //
-        return view('newGuardien');
+        return view('auth.newUser');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreGuardianRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
         //
+
         $empData = [
             'name' => $request->name,
-            'phone' => $request->phone,
-            'payment_date' => $request->payment_date,
-            'site' => $request->site,
+            'email' => $request->email,
+            'password' => Hash::make($request['password']),
         ];
 
-        Guardian::create($empData);
+        User::create($empData);
 
-        notify()->success('data created successfully 👌😎!');
+        notify()->success('User created successfully 👌😎!');
 
         return back();
     }
@@ -60,10 +59,10 @@ class GuardianController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Guardian  $guardian
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Guardian $guardian)
+    public function show($id)
     {
         //
     }
@@ -71,10 +70,10 @@ class GuardianController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Guardian  $guardian
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Guardian $guardian)
+    public function edit($id)
     {
         //
     }
@@ -82,11 +81,11 @@ class GuardianController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateGuardianRequest  $request
-     * @param  \App\Models\Guardian  $guardian
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateGuardianRequest $request, Guardian $guardian)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -94,13 +93,13 @@ class GuardianController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Guardian  $guardian
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Guardian $guardian)
+    public function destroy(User $user)
     {
         //
-        $guardian->delete();
+        $user->delete();
 
         notify()->success('data deleted successfully😎');
 
